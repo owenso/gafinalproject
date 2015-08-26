@@ -1,0 +1,38 @@
+<div id="userbar">
+	{{#if sessiondata.name}}
+	<div id="userbar-left">
+	<h2>Hi, {{sessiondata.name}}!</h2>
+	</div>
+	
+	<div id="userbar-right">
+		<form action="/session/logout" method="post">
+    <button name="logout">Logout</button>
+		</form>
+	</div>
+	{{else}}
+	<div id="userbar-left">
+		<div id="login-header">
+			<h2>Log-in</h2>
+		<div id="error-message">
+			<p>{{errormessage}}</p>
+		</div>
+	</div>
+	<form id="login-form" action="session/login" method="POST">
+		<input class="text-input" name="username" type="text" placeholder="Username" required>
+		<input class="text-input" name="password" type="password" placeholder="Password" required>
+		<input type="submit" value="Submit">
+	</form>
+	</div>
+	<div id="userbar-right">
+		<a href="users/new"><h2>SignUp</h2></a>
+	</div>
+{{/if}}
+</div>
+<div id="clearer"></div>
+
+<h2>{{title}}</h2>
+<br>
+<a href="/maps"><h2>Oh Look, heres a map of some stuff!</h2></a>
+
+
+

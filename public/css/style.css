@@ -1,0 +1,162 @@
+    html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+h2{
+  font-size: 18px;
+  margin:0;
+}
+
+/******Userbar - login/logout******/
+
+#userbar-left {
+    float: left;
+}
+
+#userbar-right {
+    float: right;
+}
+
+#userbar {
+    background-color: teal;
+    overflow:auto;
+    padding: 1% 2%;
+    margin-bottom: 3%
+}
+
+#clearer {
+    clear: both;
+}
+#login-form{
+  display:flex;
+  width:100%;
+  font-size: 12px;
+
+}
+#login-header{
+  display: flex;
+}
+#error-message p {
+    margin: 0;
+    margin-top: 4%;
+    margin-left: 20px;
+    color:gold;
+}
+
+.text-input{
+  margin:0 5px 5px 0;
+  width:100px;
+}
+input[type="submit"]{
+  height:21px;
+}
+
+/**************Map****************/
+
+#map {
+  height: 400px;
+  width: 400px;
+  margin: 0 auto;
+
+}
+
+#results {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    right: 5px;
+    top: 60%;
+    margin-top: -195px;
+    height: 330px;
+    width: 200px;
+    padding: 5px;
+    z-index: 5;
+    border: 1px solid #999;
+    background: #fff;
+}
+
+h2 {
+    font-size: 22px;
+    margin: 0 0 5px 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 271px;
+    width: 200px;
+    overflow-y: scroll;
+}
+
+li {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+li:nth-child(odd) {
+    background-color: #fcfcfc;
+}
+
+#more {
+    width: 100%;
+    margin: 5px 0 0 0;
+}
+
+#panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+}
+
+/**
+ * Provide the following styles for both ID and class, where ID represents an
+ * actual existing "panel" with JS bound to its name, and the class is just
+ * non-map content that may already have a different ID with JS bound to its
+ * name.
+ */
+
+#panel, .panel {
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+#panel select, #panel input, .panel select, .panel input {
+  font-size: 15px;
+}
+
+#panel select, .panel select {
+  width: 100%;
+}
+
+#panel i, .panel i {
+  font-size: 12px;
+}
+
+#list-icon-grocery{
+  height:12px;
+  padding-right: 5px;
+}
+
+#list-icon-gym {
+    height: 20px;
+    padding-right: 5px;
+    margin-bottom: -4px;
+}
+
