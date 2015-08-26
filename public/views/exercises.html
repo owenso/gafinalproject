@@ -1,0 +1,22 @@
+<!-- <div class="jumbotron text-center">
+    <h1>Bunch o exercises</h1>
+		<p>{{status}}</p>
+    <p>{{exercises}}</p>
+</div> -->
+Search: <input ng-model="query">
+Sort by:
+<select ng-model="orderProp">
+  <option value="muscle_name">Primary Muscle</option>
+  <option value="exercise_name">Exercise Name</option>
+   <option value="bodypart_name">Bodypart Name</option>
+</select>
+
+ <li ng-repeat="exercise in exercises | filter:query | orderBy:orderProp">
+ 	<a href="#/exercises/{{exercise._id}}">
+	  <div id="each-exercise">
+	  <p>{{exercise.exercise_name}}</p> 
+	  <p>{{exercise.muscle_name}}</p>
+	  <p>{{exercise.bodypart_name}}</p>
+	</div>
+	</a>
+</li> 
