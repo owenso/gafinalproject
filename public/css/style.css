@@ -14,28 +14,23 @@ h2{
   font-size: 18px;
   margin:0;
 }
-/***********Form Field***************/
-#login-form{
-  width:90%;
-  margin: 0 auto;
+
+.clearer{
+  clear:both;
+}
+/***********LoginBar***************/
+
+#login-out-bar{
+  float:right;
+  margin:15px;
+  color:#8b8b8b;
 }
 
-.form-field{
-  width: 100%;
-  height:40px;
-  display:block;
+#logged-in-field{
+  display:flex;
 }
+/***********Exercise Page**************/
 
-#form-button{
-  width:100%;
-}
-
-#message-text{
-  width:100%;
-  text-align: center;
-}
-
-#status-text{
-  width:100%;
-  text-align: center;
+#individual-ex{
+  width:500px;
 }

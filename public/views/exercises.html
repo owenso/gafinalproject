@@ -12,7 +12,7 @@ Sort by:
 </select>
 
  <li ng-repeat="exercise in exercises | filter:query | orderBy:orderProp">
- 	<a href="#/exercises/{{exercise._id}}">
+ 	<a href="/#/exercises/{{exercise._id}}">
 	  <div id="each-exercise">
 	  <p>{{exercise.exercise_name}}</p> 
 	  <p>{{exercise.muscle_name}}</p>

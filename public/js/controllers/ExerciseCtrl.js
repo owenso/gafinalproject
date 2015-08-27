@@ -29,7 +29,7 @@ ExerciseCtrl.controller('ExerciseController', function($scope, $http, $window, E
                 $scope.exercises = exercises;
             })
             .error(function(error) {
-                console.log('you done fucked up')
+                console.log('you done fucked up');
                 $scope.status = 'Unable to load data: ' + error.message;
             });
     }

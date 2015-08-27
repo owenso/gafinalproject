@@ -24,6 +24,15 @@ module.exports = function(app) {
             }
         });
     });
+    app.get('/api/exercises/:id', function(req, res, next) {
+        mongoose.model('exrx').find({'_id':req.params.id}, function(err, exercise) {
+            if (err) {
+                return console.error(err);
+            } else {
+                res.json(exercise);
+            }
+        });
+    });
     app.post('/login', function(req, res) {
         var username = req.body.username;
         var password = req.body.password;

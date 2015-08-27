@@ -13,7 +13,7 @@ var MongoStore = require('connect-mongo')(session);
 var db = require('./config/db');
 
 var port = process.env.PORT || 8080; 
-
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
 app.use(session({
     secret: '6t43regfuyho085y7gihjg08u9eygihj3ygj',

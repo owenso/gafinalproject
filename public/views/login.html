@@ -1,7 +1,6 @@
 <div ng-controller="LoginController">
   <span></span>
-  <form id="login-form" ng-submit="submit()">
-    <p id="message-text">{{message}}</p>
+  <form id="login-form" ng-submit="login()">
     <input class="form-field" ng-model="user.username" type="text" name="user" placeholder="Username" />
     <input class="form-field" ng-model="user.password" type="password" name="pass" placeholder="Password" />
     <input id = "form-button" type="submit" value="Login" />

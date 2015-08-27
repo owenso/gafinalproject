@@ -12,14 +12,18 @@
             templateUrl: 'views/user.html',
             controller: 'UserController'
         })
-        .when('/login', {
-            templateUrl: 'views/login.html',
-            controller: 'LoginController'
-        })
         .when('/exercises', {
             templateUrl: 'views/exercises.html',
             controller: 'ExerciseController'
+        })
+        .when('/exercises/:exerciseId', {
+            templateUrl: 'views/partials/indivexercise.html',
+            controller: 'ExerciseDetailCtrl'
+        })
+        .otherwise({
+            redirecto: '/'
         });
+
     $locationProvider.html5Mode(true);
 
 }]);

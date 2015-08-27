@@ -1,8 +1,6 @@
-angular.module('LoginCtrl', []).controller('LoginController', function($scope, $http, $window) {
+angular.module('LoginCtrl', []).controller('LoginController', function($scope, $http, $window, $rootScope) {
 
-    $scope.status;
-    $scope.message = "Login";
-    $scope.submit = function() {
+    $scope.login = function() {
         $http
             .post('/login', $scope.user)
             .success(function(data, status, headers, config) {
@@ -11,8 +9,9 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
                 $window.sessionStorage.id = data._id;
                 $window.sessionStorage.name = data.name;
 
+                $rootScope.currentUserSignedIn = true;
+                $rootScope.currentUsername = data.name;
 
-                $scope.message = 'Welcome ' + $window.sessionStorage.name;
             })
             .error(function(data, status, headers, config) {
                 // Erase the token if the user fails to log in
@@ -21,11 +20,26 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
                 delete $window.sessionStorage.id;
                 delete $window.sessionStorage.name;
 
-
+                $rootScope.currentUserSignedIn = false;
+                delete $rootScope.currentUsername;
                 // Handle login errors here
                 $scope.message = 'Error: Invalid user or password';
                                 console.log($scope.message);
 
+            });
+    };
+    $scope.logout = function() {
+                console.log('in here');
+        $http
+            .post('/logout')
+            .success(function(data, status, headers, config) {
+                delete $window.sessionStorage.username;
+                delete $window.sessionStorage.email;
+                delete $window.sessionStorage.id;
+                delete $window.sessionStorage.name;
+
+                $rootScope.currentUserSignedIn = false;
+                delete $rootScope.currentUsername;
             });
     };
 });

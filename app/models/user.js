@@ -6,8 +6,8 @@ var userSchema = new mongoose.Schema({
   name: String,
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  admin: Boolean,
   email: { type: String, required: true, unique: true },
+  workout: {type: mongoose.Schema.Types.ObjectId, ref: 'workout'},
   created_at: Date,
   updated_at: Date
 });

@@ -7,7 +7,6 @@ var UserCtrl = angular.module('UserCtrl', ['UserService']);
 UserCtrl.controller('UserController', function($scope, $http, $window, UserDataOp) {
     $scope.status;
     $scope.users;
-    $scope.message = "this is where the message lives";
     getUsers();
     
     $scope.addUser = function() {
@@ -35,10 +34,7 @@ UserCtrl.controller('UserController', function($scope, $http, $window, UserDataO
                 $scope.status = 'Unable to load data: ' + error.message;
             });
     }
-    function welcome(){
-    	$scope.message = 'Welcome';
-      $scope.status = "Working?";
-    }
+
 });
 
 
