@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 var exerciseSchema = new mongoose.Schema({  
   exercise_name: String,
@@ -9,6 +10,6 @@ var exerciseSchema = new mongoose.Schema({
   reps: Number,
   maxWeight: Number,
   maxReps: Number
-}, {collection:'exrx'});
+}, {collection:'exrx'}).plugin(deepPopulate);
 
 mongoose.model('exrx', exerciseSchema);

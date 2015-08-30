@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');  
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 var userSchema = new mongoose.Schema({  
   name: String,
@@ -14,7 +15,8 @@ var userSchema = new mongoose.Schema({
   workouts: [{type: mongoose.Schema.Types.ObjectId, ref: 'workout'}],
   created_at: Date,
   updated_at: Date
-});
+}).plugin(deepPopulate);
+
 
 userSchema.pre('save', function(next) {
     var user = this;

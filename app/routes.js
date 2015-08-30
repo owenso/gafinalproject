@@ -5,7 +5,6 @@ var mongoose = require('mongoose');
 var path = require('path');
 
 
-
 module.exports = function(app) {
     app.get('/api/users', function(req, res, next) {
         mongoose.model('User').find({}, function(err, users) {
@@ -21,17 +20,12 @@ module.exports = function(app) {
             if (err) {
                 return console.error(err);
             } else {
-                res.json(user);
+                // res.json(user);
             }
         })
-            .populate('workouts')
-            .exec(function(error, users) {
-                console.log('in here');
-                users.populate('workouts.exercises')
-                .exec(function(error, workouts){
-
-                });
-            });
+        .deepPopulate('workouts.exercises').exec(function (err, result) {
+            res.json(result);
+        });
     });
     app.post('/api/adduser', function(req, res, next) {
         console.log(req.body);
