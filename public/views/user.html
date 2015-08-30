@@ -1,7 +1,14 @@
 <div class="jumbotron text-center">
-    <h1>I don't actually need a users page</h1>
+    <h3>User Sign-up</h3>
+	<form id="user-signup" ng-submit="addUser()">
+	<input class="signup-input-field" ng-model="user.name" type="name" name="name" placeholder="Name" /><br>
+	<input class="signup-input-field" ng-model="user.startWeight" type="number" name="startWeight" placeholder="Weight" /><br>
+	<input class="signup-input-field" ng-model="user.startBodyfat" type="number" name="startBodyfat" placeholder="Bodyfat" /><br>
+	<input class="signup-input-field" ng-model="user.username" type="username" name="username" placeholder="Username" /><br>
+	<input class="signup-input-field" ng-model="user.password" type="password" name="password" placeholder="Password" /><br>
+	<input class="signup-input-field" ng-model="user.email" type="email" name="email" placeholder="Email" /><br>
 
-    <p>{{users}}</p>
-    <p>{{status}}</p>
+	<input id = "signup-form-button" type="submit" value="Submit" />
+</form>
 </div>
 

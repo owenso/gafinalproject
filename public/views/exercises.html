@@ -11,7 +11,7 @@ Sort by:
    <option value="bodypart_name">Bodypart Name</option>
 </select>
 
- <li ng-repeat="exercise in exercises | filter:query | orderBy:orderProp">
+<!--  <li ng-repeat="exercise in exercises | filter:query | orderBy:orderProp">
  	<a href="/#/exercises/{{exercise._id}}">
 	  <div id="each-exercise">
 	  <p>{{exercise.exercise_name}}</p> 
@@ -20,3 +20,27 @@ Sort by:
 	</div>
 	</a>
 </li> 
+ -->
+<!-- 
+<table ng-table="tableParams" class="table">
+
+    <tr ng-repeat="exercise in $data | filter:query | orderBy:orderProp">
+		  <td data-title="Exercise Name"><a href="/#/exercises/{{exercise._id}}">{{exercise.exercise_name}}</a></td> 
+		  <td data-title="Primary Muscle"><a href="/#/exercises/{{exercise._id}}">{{exercise.muscle_name}}</a></td>
+		  <td data-title="Muscle Group"><a href="/#/exercises/{{exercise._id}}">{{exercise.bodypart_name}}</a></td>
+    </tr>
+</table> -->
+
+
+<table id="ex-table" class="table">
+  <tr>
+    <th>Exercise Name</th>
+    <th>Primary Muscle</th> 
+    <th>Muscle Group</th>
+  </tr>
+  <tr ng-repeat="exercise in exercises | filter:query | orderBy:orderProp">
+		  <td><a href="/#/exercises/{{exercise._id}}">{{exercise.exercise_name}}</a></td> 
+		  <td><a href="/#/exercises/{{exercise._id}}">{{exercise.muscle_name}}</a></td>
+		  <td><a href="/#/exercises/{{exercise._id}}">{{exercise.bodypart_name}}</a></td>
+  </tr>
+</table>

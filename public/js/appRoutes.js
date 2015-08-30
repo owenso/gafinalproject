@@ -20,6 +20,14 @@
             templateUrl: 'views/partials/indivexercise.html',
             controller: 'ExerciseDetailCtrl'
         })
+        .when('/users/:currentId', {
+            templateUrl: 'views/userpage.html',
+            controller: 'UserProfileCtrl'
+        })
+        .when('/workouts', {
+            templateUrl: 'views/workouts.html',
+            controller: 'WorkoutCtrl'
+        })
         .otherwise({
             redirecto: '/'
         });

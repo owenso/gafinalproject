@@ -1,0 +1,44 @@
+<div class="jumbotron text-center">
+
+	<form id="workout-form">
+		<input class="workout-form-input" ng-model="title" type="text" name="title" placeholder="Title" /><br>
+		<input class="workout-form-input" ng-model="workoutDate" type="date" name="workoutDate"  /><br>
+		<textarea class="workout-form-input" ng-model="comments" name="comments" form="workout-form">Comments...</textarea><br>
+		 <fieldset  data-ng-repeat="choice in choices">
+	      <select ng-model="choice.id" ng-options="workout._id as workout.exercise_name for workout in workouts" ></select>
+
+	      <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
+	   </fieldset><br>
+	   <button class="addfields" ng-click="addNewChoice()">Add fields</button>
+	       
+	   <div id="choicesDisplay">
+	      {{ choices }}
+	   </div>
+		<input id = "form-button" type="submit" value="Submit" ng-click="newWorkout()"/>
+	</form>
+</div>
+
+<!--    <h3>Select2 theme</h3>
+  <p>Selected: {{exercises.selected}}</p>
+  <ui-select ng-model="exercises.selected" theme="select2" ng-disabled="disabled" style="min-width: 300px;">
+    <ui-select-match placeholder="Select a exercise in the list...">{{$select.selected.name}}</ui-select-match>
+    <ui-select-choices repeat="workout in workouts | propsFilter: {exercise_name: $select.search}">
+      <div ng-bind-html="workout.exercise_name | highlight: $select.search"></div>
+      <small>
+        Muscle Group: {{workout.bodypart_name}}
+      </small>
+    </ui-select-choices>
+  </ui-select> -->
+<!-- 
+    <h3>Bootstrap theme</h3>
+  <p>Selected: {{exercises.selected}}</p>
+  <ui-select ng-model="exercises.selected"
+             theme="bootstrap"
+             ng-disabled="disabled"
+             reset-search-input="false"
+             style="width: 300px;">
+    <ui-select-match placeholder="Enter an address...">{{$select.selected.name}}</ui-select-match>
+    <ui-select-choices repeat="workout in workouts | propsFilter: {exercise_name: $select.search}">
+      <div ng-bind-html="workout.exercise_name | highlight: $select.search"></div>
+    </ui-select-choices>
+  </ui-select> -->

@@ -1,10 +1,8 @@
 var ExerciseCtrl = angular.module('ExerciseCtrl', ['ExerciseService']);
 
 ExerciseCtrl.controller('ExerciseController', function($scope, $http, $window, ExerciseDataOp) {
-    $scope.status = 'exercise page loaded';
     $scope.exercises;
     $scope.orderProp = 'bodypart_name';
-
     getExercises();
     
     $scope.addExercise = function() {

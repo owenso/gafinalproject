@@ -10,7 +10,11 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
                 $window.sessionStorage.name = data.name;
 
                 $rootScope.currentUserSignedIn = true;
-                $rootScope.currentUsername = data.name;
+                $rootScope.currentName = data.name;
+                $rootScope.currentUsername = data.username;
+                $rootScope.currentEmail = data.email;
+                $rootScope.currentId = data._id;
+                $rootScope.currentName = data.name;
 
             })
             .error(function(data, status, headers, config) {
@@ -21,7 +25,11 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
                 delete $window.sessionStorage.name;
 
                 $rootScope.currentUserSignedIn = false;
+                delete $rootScope.currentName;
                 delete $rootScope.currentUsername;
+                delete $rootScope.currentEmail;
+                delete $rootScope.currentId;
+                delete $rootScope.currentName;
                 // Handle login errors here
                 $scope.message = 'Error: Invalid user or password';
                                 console.log($scope.message);
@@ -39,7 +47,11 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
                 delete $window.sessionStorage.name;
 
                 $rootScope.currentUserSignedIn = false;
+                delete $rootScope.currentName;
                 delete $rootScope.currentUsername;
+                delete $rootScope.currentEmail;
+                delete $rootScope.currentId;
+                delete $rootScope.currentName;
             });
     };
 });

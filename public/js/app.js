@@ -1,1 +1,1 @@
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'LoginCtrl', 'MainCtrl', 'UserCtrl', 'UserService', 'ExerciseDetailCtrl', 'ExerciseCtrl', 'ExerciseService']);
+angular.module('myApp', ['ngRoute', 'appRoutes', 'LoginCtrl', 'MainCtrl', 'UserCtrl', 'UserService', 'ExerciseDetailCtrl', 'ExerciseCtrl', 'ExerciseService', 'WorkoutCtrl', 'WorkoutService', 'UserProfileCtrl', 'ngSanitize', 'ui.select']);

@@ -1,41 +1,15 @@
-// angular.module('UserCtrl', []).controller('UserController', function($scope) {
-//     $scope.tagline = 'Nothing beats a pocket protector!';
-// });
-
 var UserCtrl = angular.module('UserCtrl', ['UserService']);
 
-UserCtrl.controller('UserController', function($scope, $http, $window, UserDataOp) {
-    $scope.status;
-    $scope.users;
-    getUsers();
-    
+UserCtrl.controller('UserController', ['$scope', '$http', function($scope, $http, UserDataOp) {
     $scope.addUser = function() {
-
-        var user = {
-            ID: 145,
-            FirstName: $scope.fname,
-            LastName: $scope.lname
-        };
-        UserDataOp.addUser(user)
+        UserDataOp.addUser($scope.user)
             .success(function() {
-                $scope.status = 'Inserted User! Refreshing User list.';
-                $scope.users.push(user);
             }).
         error(function(error) {
-            $scope.status = 'Unable to insert User: ' + error.message;
+            $scope.status = 'Unable to create User: ' + error.message;
         });
     };
-    function getUsers() {
-        UserDataOp.getUsers()
-            .success(function(users) {
-                $scope.users = users;
-            })
-            .error(function(error) {
-                $scope.status = 'Unable to load data: ' + error.message;
-            });
-    }
-
-});
+}]);
 
 
 // myApp.controller('UserCtrl', function($scope, $http, $window) {

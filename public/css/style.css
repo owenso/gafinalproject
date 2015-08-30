@@ -6,8 +6,7 @@ body {
 }
 
 a {
-    color: #000;
-    text-decoration: none;
+  text-decoration: none;
 }
 
 h2{
@@ -26,11 +25,38 @@ h2{
   color:#8b8b8b;
 }
 
+#login-out-bar a {
+  color:#8b8b8b;
+}
+
 #logged-in-field{
   display:flex;
+}
+#logout-button{
+  margin-left: 15px;
 }
 /***********Exercise Page**************/
 
 #individual-ex{
   width:500px;
+}
+
+
+/*************Exercise Table****************/
+table{
+  min-width:100%;
+}
+
+/*************Signup Form******************/
+.signup-input-field{
+  width: 600px;
+}
+
+#signup-form-button{
+  width:600px;
+}
+
+/*******************WorkoutForm**************/
+.workout-form-input{
+  width:600px;
 }
