@@ -1,6 +1,80 @@
-<h2>{{user.username}}'s User Profile</h2>
-Name: {{user.name}}<br>
-Starting Weight: {{user.startWeight}}lbs<br>
-Starting Bodyfat: {{user.startBodyfat}}%<br>
+<h2>{{storeDataModel.username}}'s User Profile</h2>
+Name: {{storeDataModel.name}}<br>
+Starting Weight: {{storeDataModel.startWeight}}lbs<br>
+Starting Bodyfat: {{storeDataModel.startBodyfat}}%<br>
 
-Workouts {{user.workouts}}
+<!-- Workouts {{user.workouts}}
+ -->
+
+<!-- <table id="workout-table" class="table">
+  <tr>
+    <th>Title</th>
+    <th>Comment</th> 
+    <th>Exercises</th>
+  </tr>
+  <tr ng-repeat="n in user.workouts">
+		  <td>{{n.title}}</td> 
+		  <td>{{n.comments}}</td>
+		  <td>{{n.exercises}}</td>
+  </tr>
+  </table> -->
+  <h3>Workout History</h3>
+
+
+        <div>
+            <table class="table table-hover table-condensed table-striped">
+                <thead class="levelOne">
+                    <tr>
+                                        <th>Date</th>
+									    <th>Title</th>
+									    <th>Comment</th> 
+                                        <th></th>
+                    </tr>
+                </thead>
+                <tbody data-ng-repeat="n in storeDataModel.workouts" data-ng-switch on="dayDataCollapse[$index]">
+                    <tr>
+                                          <td class="clickableRow" title="Click to toggle collapse/expand workouts." data-ng-click="selectTableRow($index, n.exercises)" >{{n.workoutDate}}</td>
+										  <td class="clickableRow" title="Click to toggle collapse/expand workouts." data-ng-click="selectTableRow($index, n.exercises)" >{{n.title}}</td> 
+										  <td class="clickableRow" title="Click to toggle collapse/expand workouts." data-ng-click="selectTableRow($index, n.exercises)" >{{n.comments}}</td>
+                                          <td class="delete-button-cell"><input type="submit" value="Delete" ng-click="deleteWorkout(n._id, $index)"/></td>
+
+                    </tr>
+                    <tr data-ng-switch-when="true">
+                        <td colspan="9">
+                            <div class="span9">
+                                <div class="pull-right">
+                                    <table class="table table-hover table-condensed table-striped">
+                                        <thead class="levelTwo">
+                                            <tr class="link-to-workout">
+                                                <td><a href="/#/workouts/{{n._id}}">Open Workout</a></td>
+                                            </tr>
+                                            <tr>
+                                                <th></th>
+                                                <th>Muscle Group</th>
+                                                <th>Exercise Name</th>
+                                                <th>Muscle Name</th>
+                                                <th>Sets</th>
+                                                <th>Reps</th>
+                                                <th>Weight</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr data-ng-repeat="ex in storeDataModel.workouts[$index].exercises">
+                                                <td class="pullright">
+                                                </td>
+                                                <td><a href="/#/exercises/{{ex.exercise._id}}">{{ex.exercise.bodypart_name}}</a></td>
+                                                <td><a href="/#/exercises/{{ex.exercise._id}}">{{ex.exercise.exercise_name}}</a></td>
+                                                <td><a href="/#/exercises/{{ex.exercise._id}}">{{ex.exercise.muscle_name}}</a></td>
+                                                <td><a href="/#/exercises/{{ex.exercise._id}}">{{ex.sets}}</a></td>
+                                                <td><a href="/#/exercises/{{ex.exercise._id}}">{{ex.reps}}</a></td>
+                                                <td><a href="/#/exercises/{{ex.exercise._id}}">{{ex.weight}}</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>

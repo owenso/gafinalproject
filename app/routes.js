@@ -6,6 +6,8 @@ var path = require('path');
 
 
 module.exports = function(app) {
+
+    ////User Routes
     app.get('/api/users', function(req, res, next) {
         mongoose.model('User').find({}, function(err, users) {
             if (err) {
@@ -23,12 +25,11 @@ module.exports = function(app) {
                 // res.json(user);
             }
         })
-        .deepPopulate('workouts.exercises').exec(function (err, result) {
+        .deepPopulate('workouts.exercises.exercise').exec(function (err, result) {
             res.json(result);
         });
     });
     app.post('/api/adduser', function(req, res, next) {
-        console.log(req.body);
         mongoose.model('User').create(req.body, function(err, user) {
             if (err) {
                 return console.error(err);
@@ -37,6 +38,8 @@ module.exports = function(app) {
             }
         });
     });
+
+    ////Exercise Routes
     app.get('/api/exercises', function(req, res, next) {
         mongoose.model('exrx').find({}, function(err, exercises) {
             if (err) {
@@ -55,6 +58,8 @@ module.exports = function(app) {
             }
         });
     });
+
+    ///Workouts Routes
     app.get('/api/workouts', function(req, res, next) {
         mongoose.model('workout').find({}, function(err, exercises) {
             if (err) {
@@ -83,33 +88,68 @@ module.exports = function(app) {
     }
     });
 });
+    app.delete('/api/workouts/:workoutId', function(req, res, next) {
+        mongoose.model('workout').findOneAndRemove({'_id':req.params.workoutId}, function(err, removedworkout) {
+            if (err) {
+                return console.error(err);
+            } else {
+                res.json(removedworkout);
+            }
+        });
+    });
     app.post('/api/addexercise/:workout/:exercise', function(req, res, next) {
         mongoose.model('workout').findOne({'_id':req.params.workout}, function(err, workout) {
             if (err) {
                 return console.error(err);
             } else {
-            mongoose.model('exrx').findOne({'_id':req.params.exercise}, function(err, exercise) {
+            mongoose.model('exrx').findOne({'_id':req.params.exercise}, function(err, exerc) {
                 if (err) {
                     return console.error(err);
                 } else {
                     //save key to workout
-                      workout.exercises.push(exercise._id);
+                        var newEx = {
+                            exercise: exerc._id,
+                            // reps:0,
+                            // sets:0,
+                            // weight:0
+                        };
+                      workout.exercises.push(newEx);
                       workout.save();
                     }
-                    res.json(exercise);
+                    res.json(exerc);
             });
             }
         });
     }); 
     app.get('/api/workouts/:id', function(req, res, next) {
-        mongoose.model('workout').find({'_id':req.params.id}, function(err, exercise) {
+        mongoose.model('workout').findOne({'_id':req.params.id}, function(err, workout) {
             if (err) {
                 return console.error(err);
             } else {
-                res.json(exercise);
+                // res.json(workout);
             }
+        })
+        .deepPopulate('exercises.exercise').exec(function (err, result) {
+            console.log('populating');//////////////////////////////////////////////////WORKING HERE
+            res.json(result);
         });
     });
+    /////Edit workout
+    app.put('/api/workouts/:id', function(req, res, next) {
+        mongoose.model('workout').findOne({'_id':req.params.id}, function(err, workout) {
+            if (err) {
+                return console.error(err);
+            } else {
+                // res.json(workout);
+            }
+        })
+        .deepPopulate('exercises.exercise').exec(function (err, result) {
+            res.json(result);
+        });
+    });
+
+
+    /////UserAuth
     app.post('/login', function(req, res) {
         var username = req.body.username;
         var password = req.body.password;
@@ -122,7 +162,6 @@ module.exports = function(app) {
 
             } else {
                 if (user) {
-                    console.log(user);
                     user.comparePassword(password, function(passMatch) {
                         if (passMatch) {
                             console.log('password accepted');
@@ -146,6 +185,6 @@ module.exports = function(app) {
         res.redirect('/');
     });
     app.get('*', function(req, res) {
-        res.sendFile(path.join(__dirname, '../public/views/index.html'));
+        res.sendFile('index.html', { root: './public' });
     });
 };

@@ -5,15 +5,15 @@
 		<input class="workout-form-input" ng-model="workoutDate" type="date" name="workoutDate"  /><br>
 		<textarea class="workout-form-input" ng-model="comments" name="comments" form="workout-form">Comments...</textarea><br>
 		 <fieldset  data-ng-repeat="choice in choices">
-	      <select ng-model="choice.id" ng-options="workout._id as workout.exercise_name for workout in workouts" ></select>
+	      <select ng-model="choice.id" ng-options="workout._id as workout.exercise_name for workout in workouts" required ></select>
 
 	      <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
 	   </fieldset><br>
 	   <button class="addfields" ng-click="addNewChoice()">Add fields</button>
 	       
-	   <div id="choicesDisplay">
+<!-- 	   <div id="choicesDisplay">
 	      {{ choices }}
-	   </div>
+	   </div> -->
 		<input id = "form-button" type="submit" value="Submit" ng-click="newWorkout()"/>
 	</form>
 </div>

@@ -1,15 +1,22 @@
 var WorkoutCtrl = angular.module('WorkoutCtrl', ['WorkoutService', 'ngSanitize', 'ui.select']);
 
-WorkoutCtrl.controller('WorkoutCtrl', function($scope, $routeParams, $window, $http, WorkoutDataOp) {
+WorkoutCtrl.controller('WorkoutCtrl', function($scope, $routeParams, $window, $rootScope, $http, WorkoutDataOp, $location) {
     $http.get('/api/exercises/').success(function(data) {
       $scope.workouts = data;
     });
-
+    if ($window.sessionStorage.id){
+      $rootScope.currentUserSignedIn = true;
+      $rootScope.currentName = $window.sessionStorage.name;
+      $rootScope.currentId = $window.sessionStorage.id;
+    }
     $scope.choices = [{id: 'choice1'}, {id: 'choice2'}];
     $scope.exercises = {};
     $scope.workoutDate  = new Date();
 
-    $scope.newWorkout = function () {
+    $scope.deleteWorkout = function(id){
+      WorkoutDataOp.deleteWorkout(id);
+    };
+    $scope.newWorkout = function () {///creating a workout should take you to the page to do that workout
       var data = {
         workoutData:{
           title: $scope.title,
@@ -25,6 +32,8 @@ WorkoutCtrl.controller('WorkoutCtrl', function($scope, $routeParams, $window, $h
               for (var i = 0; i<$scope.choices.length;i++){
                   WorkoutDataOp.addExToWorkout(newlyAdded._id, $scope.choices[i].id);
               }
+            $location.path("/workouts/" + newlyAdded._id);
+
             })
             .error(function(error) {
                 $scope.status = 'Unable to load data: ' + error.message;

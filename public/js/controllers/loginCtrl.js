@@ -1,4 +1,4 @@
-angular.module('LoginCtrl', []).controller('LoginController', function($scope, $http, $window, $rootScope) {
+angular.module('LoginCtrl', []).controller('LoginController', function($scope, $http, $window, $rootScope, $location) {
 
     $scope.login = function() {
         $http
@@ -15,6 +15,9 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
                 $rootScope.currentEmail = data.email;
                 $rootScope.currentId = data._id;
                 $rootScope.currentName = data.name;
+
+
+                $location.path("/users/" + data._id);
 
             })
             .error(function(data, status, headers, config) {
@@ -37,7 +40,6 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
             });
     };
     $scope.logout = function() {
-                console.log('in here');
         $http
             .post('/logout')
             .success(function(data, status, headers, config) {

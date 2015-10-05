@@ -14,9 +14,14 @@ h2{
   margin:0;
 }
 
+h3{
+  font-size: 16px;
+}
+
 .clearer{
   clear:both;
 }
+
 /***********LoginBar***************/
 
 #login-out-bar{
@@ -45,6 +50,10 @@ h2{
 /*************Exercise Table****************/
 table{
   min-width:100%;
+}
+
+.delete-button-cell{
+  width:40px;
 }
 
 /*************Signup Form******************/

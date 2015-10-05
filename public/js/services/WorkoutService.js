@@ -15,6 +15,9 @@ WorkoutService.factory('WorkoutDataOp', ['$http', function ($http) {
     WorkoutDataOp.addExToWorkout = function (workout, exercise) {
         return $http.post(urlBase + '/addexercise/'+ workout + '/' + exercise);
     };
+    WorkoutDataOp.deleteWorkout = function (workout) {
+        return $http.delete(urlBase + '/workouts/'+ workout);
+    };
     return WorkoutDataOp;
 
 }]);

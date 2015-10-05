@@ -1,0 +1,28 @@
+<div id="individual-workout">
+
+<h1>{{workout.title}}</h1>
+<h3>Comments:</h3>
+<p>{{workout.comments}}</p>
+<br>
+
+<table class="table">
+  <tr>
+    <th>Exercise Name</th>
+    <th>Primary Muscle</th> 
+    <th>Muscle Group</th>
+  </tr>
+  <tr ng-repeat="n in workout.exercises">
+		  <td><a href="/#/{{n.exercise.link}}">{{n.exercise.exercise_name}}</a></td> 
+		  <td><a href="/#/{{n.exercise.link}}">{{n.exercise.muscle_name}}</a></td>
+		  <td><a href="/#/{{n.exercise.link}}">{{n.exercise.bodypart_name}}</a></td>
+		  <td><input id="reps" placeholder="Reps"></td><!-- {{n.reps}} -->
+			<td><input id ="sets" placeholder="Sets"></td><!-- {{n.sets}} -->
+			<td><input id="Weight" placeholder="Weight"></td><!-- {{n.weight}} -->
+			<td>{{$index}}</td>
+  </tr>
+</table>
+
+
+
+
+</div>

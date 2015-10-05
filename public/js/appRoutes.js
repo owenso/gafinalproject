@@ -28,6 +28,10 @@
             templateUrl: 'views/workouts.html',
             controller: 'WorkoutCtrl'
         })
+        .when('/workouts/:workoutId', {
+            templateUrl: 'views/doworkout.html',
+            controller: 'DoWorkoutCtrl'
+        })
         .otherwise({
             redirecto: '/'
         });
