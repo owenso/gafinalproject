@@ -5,7 +5,7 @@ UserProfileCtrl.controller('UserProfileCtrl', ['$scope', '$routeParams', '$windo
   	function getUserData() {
         UserDataOp.getUser($routeParams.currentId)
             .success(function(user) {
-                $scope.storeDataModel = user[0];
+                $scope.storeDataModel = user;
 
 
         $scope.dayDataCollapseFn = function () {
